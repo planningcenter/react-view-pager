@@ -27,12 +27,6 @@ var externals = {
     commonjs2: 'resize-observer-polyfill',
     commonjs: 'resize-observer-polyfill',
     amd: 'resize-observer-polyfill'
-  },
-  'get-prefix': {
-    root: 'getPrefix',
-    commonjs2: 'get-prefix',
-    commonjs: 'get-prefix',
-    amd: 'get-prefix'
   }
 };
 

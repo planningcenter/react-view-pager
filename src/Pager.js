@@ -5,7 +5,24 @@ import ResizeObserver from 'resize-observer-polyfill'
 import PagerElement from './PagerElement'
 import { modulo, clamp, sum, max, range } from './utils'
 
-const TRANSFORM = require('get-prefix')('transform')
+const getPrefix = prop => {
+  if (typeof document === 'undefined') return prop
+
+  const styles = document.createElement('p').style
+  const vendors = ['ms', 'O', 'Moz', 'Webkit']
+
+  if (styles[prop] === '') return prop;
+
+  prop = prop.charAt(0).toUpperCase() + prop.slice(1)
+
+  for (let i = vendors.length; i--;) {
+    if (styles[vendors[i] + prop] === '') {
+      return (vendors[i] + prop)
+    }
+  }
+}
+
+const TRANSFORM = getPrefix('transform')
 const isWindowDefined = (typeof window !== 'undefined')
 
 class Track extends PagerElement {
